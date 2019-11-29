@@ -20,6 +20,7 @@
         <activity android:name=".Admin.RecyclerViewKrs" />
         <activity android:name=".Admin.CreateDosenActivity" />
         <activity android:name=".Admin.RecyclerViewDaftarDosen" />
+
         <activity android:name=".Dosen.HomeDosen" />
         <activity android:name=".Admin.HomeAdmin" />
         <activity android:name=".SplashScreen">
@@ -29,6 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".MainActivity" />
 
     </application>

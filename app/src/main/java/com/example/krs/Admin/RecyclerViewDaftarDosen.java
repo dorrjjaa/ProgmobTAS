@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.krs.Admin.Adapter.DosenAdapter;
 import com.example.krs.Admin.Model.Dosen;
 import com.example.krs.DataDosenService;
+import com.example.krs.DefaultResult;
+import com.example.krs.MainActivity;
 import com.example.krs.R;
 import com.example.krs.RetrofitClient;
 
@@ -60,9 +62,10 @@ public class RecyclerViewDaftarDosen extends AppCompatActivity {
         progressDialog.setMessage("Loading...");
         progressDialog.show();
 
+
         DataDosenService service = RetrofitClient.getRetrofitInstance().create(DataDosenService.class);
         Call<ArrayList<Dosen>> call = service.getDosenAll("72170148");
-        call.enqueue(new Callback<ArrayList<Dosen>>(){
+        call.enqueue(new Callback<ArrayList<Dosen>>() {
             @Override
             public void onResponse(Call<ArrayList<Dosen>> call, Response<ArrayList<Dosen>> response) {
                 progressDialog.dismiss();
@@ -79,10 +82,33 @@ public class RecyclerViewDaftarDosen extends AppCompatActivity {
             public void onFailure(Call<ArrayList<Dosen>> call, Throwable t) {
 
                 progressDialog.dismiss();
-                Toast.makeText(RecyclerViewDaftarDosen.this,"Coba Lagi",Toast.LENGTH_SHORT);
+                Toast.makeText(RecyclerViewDaftarDosen.this, "Coba Lagi", Toast.LENGTH_SHORT);
 
             }
         });
+    }
+
+        private void insertDosen() {
+            DataDosenService service = RetrofitClient.getRetrofitInstance().create(DataDosenService.class);
+            Call<DefaultResult> call1 = service.insertDosen("Dorra", "72170148", "Seturan", "christian@si.ukdw.ac.id",
+                    "S1", "dorra.jpg", "72170148");
+            call1.enqueue(new Callback<DefaultResult>() {
+                @Override
+                public void onResponse(Call<DefaultResult> call, Response<DefaultResult> response) {
+                    System.out.println(response.body().getStatus());
+                }
+
+                @Override
+                public void onFailure(Call<DefaultResult> call, Throwable t) {
+                    System.out.println("message :" + t.getMessage());
+                    Toast.makeText(RecyclerViewDaftarDosen.this,
+                            "Something went wrong...Please try Later!", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+
+
 
 
    /* private void tambahData(){s
