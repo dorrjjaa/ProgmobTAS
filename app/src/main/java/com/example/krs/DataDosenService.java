@@ -28,4 +28,29 @@ public interface DataDosenService {
                                   @Field("nim_progmob") String nim_progmob);
 
 
+    @POST("/api/progmob/dosen/{createfoto}")
+    Call<DefaultResult> insertDosenWithFoto(@Field("nama") String nama,
+                                            @Field("nidn") String nidn,
+                                            @Field("alamat") String alamat,
+                                            @Field("email") String email,
+                                            @Field("gelar") String gelar,
+                                            @Field("foto") String foto,
+                                            @Field("nim_progmob") String nim_progmob);
+
+    @POST("/api/progmob/dosen/{update}")
+    Call<DefaultResult> updateDosen(@Field("id") String id,
+                                    @Field("nama") String nama,
+                                    @Field("nidn") String nidn,
+                                    @Field("alamat") String alamat,
+                                    @Field("email") String email,
+                                    @Field("gelar") String gelar,
+                                    @Field("foto") String foto,
+                                    @Field("nim_progmob") String nim_progmob);
+
+    @POST("/api/progmob/dosen/{delete}")
+    Call<DefaultResult> deleteDosen(@Field("id") String id,
+                                    @Field("nim_progmob") String nim_progmob);
+
+
+
 }
